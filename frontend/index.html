@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>App-Groups</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">A</div>
+                <div>
+                    <h1>App-Groups</h1>
+                    <p>Workspace manager</p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-heading">WORKSPACES</div>
+                <div id="workspace-list" class="workspace-list">
+                    <div class="empty-workspaces">Loading workspaces...</div>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                Windows desktop manager
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <div class="eyebrow">DESKTOP MANAGEMENT</div>
+                    <h2>Windows</h2>
+                    <p class="subtitle">
+                        Scan your desktop and choose which windows belong in a workspace.
+                    </p>
+                </div>
+
+                <button id="scan-button" class="primary-button">
+                    <span aria-hidden="true">↻</span>
+                    Scan Windows
+                </button>
+            </header>
+
+            <section class="toolbar">
+                <div>
+                    <h3>Detected windows</h3>
+                    <p id="window-count">Not scanned yet</p>
+                </div>
+                <div class="toolbar-actions">
+                    <button id="select-all-button" class="secondary-button" disabled>
+                        Select all
+                    </button>
+                    <button id="clear-selection-button" class="secondary-button" disabled>
+                        Clear selection
+                    </button>
+                </div>
+            </section>
+
+            <section class="save-workspace-panel">
+                <div class="save-workspace-heading">
+                    <h3>Save selected windows</h3>
+                    <p>Give this collection of windows a name.</p>
+                </div>
+
+                <div class="save-workspace-controls">
+                    <input
+                        id="workspace-name"
+                        type="text"
+                        placeholder="Workspace name (e.g. Development)"
+                        maxlength="80"
+                    />
+                    <button id="save-workspace-button" class="primary-button" disabled>
+                        Save Workspace
+                    </button>
+                </div>
+            </section>
+
+            <div id="status" class="status" role="status" aria-live="polite">
+                Select <strong>Scan Windows</strong> to find open desktop windows.
+            </div>
+
+            <section id="window-list" class="window-list">
+                <div class="empty-state">
+                    <div class="empty-icon">▣</div>
+                    <h3>No windows loaded</h3>
+                    <p>Your detected desktop windows will appear here.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
