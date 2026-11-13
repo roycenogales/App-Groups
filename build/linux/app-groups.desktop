@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=app-groups
+Exec=app-groups
+Icon=app-groups
+Categories=Development;
+Terminal=false
+Keywords=wails
+Version=1.0
+StartupNotify=false
