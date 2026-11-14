@@ -1,12 +1,14 @@
 # App-Groups
 
-![Logo](images/Logo.png){width="500"}
+![Logo](images/Logo.png)
 
 ## What is App Groups?
 
 App Groups is a Windows desktop application that allows users to save and restore groups of open applications and their window layouts.
 
 It captures the state of selected application windows, including positioning and dimensions. A workspace can be named and saved, then to be restored at any time, automatically reopening applications in the same state as they were when the workspace was created.
+
+![Application](images/Application.png)
 
 ## Features
 - Window Detection: Detects all currently open windows.
@@ -32,6 +34,74 @@ It captures the state of selected application windows, including positioning and
 | Wails | 3.0.0 |
 |Node.js|	|
 | npm	|	|
+|WebView2|	|
+
+## Installing Dependencies
+
+### Setup Powershell
+
+[How to Setup Powershell for Github](https://github.com/roycenogales/SetUp-Powershell)
+
+### Other Dependencies
+
+```
+winget install --id GoLang.Go -e
+winget install --id OpenJS.NodeJS.LTS -e
+winget install --id Git.Git -e
+```
+
+Restart PowerShell.
+
+```
+go install github.com/wailsapp/wails/v3/cmd/wails3@v3.0.0
+#This may take a while
+```
+
+Ensure %USERPROFILE%\go\bin is included in your PATH.
+
+```
+$env:Path -split ';' | Where-Object { $_ -like '*\go\bin' }
+```
+
+If nothing appears, run the next command.
+
+```
+$goBin = "$env:USERPROFILE\go\bin"
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+
+if (($userPath -split ';') -notcontains $goBin) {
+    [Environment]::SetEnvironmentVariable(
+        "Path",
+        "$userPath;$goBin",
+        "User"
+    )
+}
+```
+
+Restart Powershell and check the path again.
+
+Verify the environment.
+
+```
+go version
+node --version
+npm --version
+git --version
+wails3 version
+wails3 doctor
+```
+
+If npm is giving a restriction error, follow these steps:
+
+```
+#Check if CurrentUser or Local Machine is Restricted of Undefined.
+Get-ExecutionPolicy -List
+
+#Then change the policy.
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+#Restart PowerShell
+```
 
 ## Build from source
 
@@ -61,5 +131,3 @@ MIT
 
 ### References
 
-![Workspaces](images/Workspaces.png)
-![Application](images/Application.png){width="50%"}
